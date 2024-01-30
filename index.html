@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoppeklokke</title>
+   
+</head>
+<body>
+    <div class="styles">
+    <button class="move" onclick="startTime()">Start</button> 
+    <button class="move"onclick="pauseTime()">Pause</button>
+    <button class="move" onclick="stopTime()">Stopp og fjern</button><br>
+    
+
+    <div id="count" class="clockDisplay"></div>  
+    <div>Rundetider:</div>
+    <div id="lastRound" class="roundsList"></div>
+    </div>
+    <script>
+        const count = document.getElementById('count');
+        const roundTime = document.getElementById('lastRound');
+        let seconds = 1;
+        var timer;
+
+
+        
+        function startTime(){
+          setInterval(countSeconds, 1000);
+        }
+
+        function countSeconds(){
+            count.innerHTML = seconds;
+            seconds++;
+        }
+
+        function pauseTime(){ 
+            roundTime.innerHTML += `<li>${seconds-1} sekunder</li>`;
+            clearInterval(timer);
+            seconds = 1;
+        }
+
+        function stopTime(){
+            location.reload()
+        }
+
+    </script>
+    <style>
+        body {
+            margin: 30px;
+        }
+        .styles {
+            background-color: rgb(200, 229, 227);
+            width: 300px;
+            height: 300px;
+            text-align: center;
+            border-radius: 50%;
+            border: solid 2px rgb(0, 0, 0);
+        }
+        .move {
+            margin-top: 100px;
+        }
+        .clockDisplay {
+            padding: 10px;
+        }
+        .roundsList{
+            background-color: antiquewhite;
+            height:50px;
+            width:90px;
+            border: 1px solid black;
+            margin-left: 100px;
+            font-size: x-small;
+
+        }
+
+    </style>
+</body>
+</html>
